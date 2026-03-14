@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Kartu Lucu</title>
+
+<style>
+
+body{
+background:linear-gradient(135deg,#ffd6e7,#ffc0cb);
+font-family:"Comic Sans MS", cursive;
+text-align:center;
+height:100vh;
+overflow:hidden;
+margin:0;
+}
+
+/* halaman pertanyaan */
+
+#page1{
+margin-top:150px;
+}
+
+h1{
+color:#ff4d88;
+font-size:36px;
+}
+
+button{
+padding:12px 30px;
+font-size:18px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+margin:10px;
+}
+
+#yes{
+background:#ff4d88;
+color:white;
+}
+
+#no{
+background:#777;
+color:white;
+position:absolute;
+}
+
+/* halaman surat */
+
+#page2{
+display:none;
+padding-top:120px;
+}
+
+.card{
+background:white;
+width:420px;
+margin:auto;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+animation:pop 1s;
+}
+
+@keyframes pop{
+0%{transform:scale(0.5);opacity:0;}
+100%{transform:scale(1);opacity:1;}
+}
+
+/* kucing berjalan */
+
+.cat{
+position:absolute;
+bottom:30px;
+left:-200px;
+width:140px;
+cursor:pointer;
+animation:jalan 12s linear infinite;
+transition:transform 0.3s;
+}
+
+.cat:hover{
+transform:scale(1.2);
+}
+
+@keyframes jalan{
+0%{left:-200px;}
+100%{left:110%;}
+}
+
+/* animasi lompat */
+
+.cat:active{
+transform:translateY(-40px);
+}
+
+/* jejak kaki */
+
+.paw{
+position:absolute;
+bottom:10px;
+font-size:20px;
+opacity:0.6;
+animation:fadepaw 3s linear infinite;
+}
+
+@keyframes fadepaw{
+0%{opacity:0;}
+50%{opacity:0.7;}
+100%{opacity:0;}
+}
+
+/* hati jatuh */
+
+.heart{
+position:absolute;
+color:#ff6fa5;
+font-size:20px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-100px);}
+100%{transform:translateY(110vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="page1">
+
+<h1>apa kamu sayang aku, my aydol? 🥺</h1>
+
+<button id="yes" onclick="openLetter()">Yes 💖</button>
+<button id="no" onmouseover="moveButton()">No 😜</button>
+
+</div>
+
+<div id="page2">
+
+<div class="card">
+<h2>💌 Surat Untukmu</h2>
+
+<p>
+halo sayangnya keonho semangat nyaa puasanya, karena bentar lagi bulan ramadhan 🌛🌛  
+minal aidzin wal faizin mohon maaf lahir batin tapi kayaknya aku mah ga mungkin ada salah  
+
+<br><br>
+
+ikan hiu makan cemani  
+<br>
+MINTA TEhHAER DONG CANTIK 😊😊
+</p>
+
+</div>
+
+</div>
+
+<!-- kucing animasi -->
+<a href="https://youtube.com" target="_blank">
+<img class="cat" src="https://media.tenor.com/2roX3uxz_68AAAAi/cat-space.gif">
+</a>
+
+<script>
+
+/* tombol no kabur */
+
+function moveButton(){
+var x=Math.random()*(window.innerWidth-100);
+var y=Math.random()*(window.innerHeight-50);
+
+var btn=document.getElementById("no");
+
+btn.style.left=x+"px";
+btn.style.top=y+"px";
+}
+
+/* buka surat */
+
+function openLetter(){
+document.getElementById("page1").style.display="none";
+document.getElementById("page2").style.display="block";
+}
+
+/* hati jatuh */
+
+for(let i=0;i<20;i++){
+
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"%";
+heart.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(heart);
+}
+
+/*  kucing */
+
+for(let i=0;i<10;i++){
+
+let paw=document.createElement("div");
+paw.className="paw";
+paw.innerHTML="🐱";
+
+paw.style.left=(i*120)+"px";
+paw.style.animationDelay=(i*0.5)+"s";
+
+document.body.appendChild(paw);
+}
+
+</script>
+
+</body>
+</html>
